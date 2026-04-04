@@ -1,1 +1,58 @@
-<h1>Mail app working</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail App</title>
+</head>
+<body>
+    <div class="email_writing">
+        <a href="/history">Go to history information</a>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="email_writing_header">
+                <h2>New Message</h2>
+            </div>
+
+            <div class="email_writing_recipients">
+                <h3>Recipients:</h3>
+                <input type="text" name="recipients" placeholder="Enter email" required>
+            </div>
+
+            <!-- CC -->
+            <div class="email_writing_cc">
+                <h3>CC:</h3>
+                <input type="text" name="cc" placeholder="email1@gmail.com, email2@gmail.com">
+            </div>
+
+            <div class="email_writing_subject">
+                <h3>Subject:</h3>
+                <input type="text" name="subject" placeholder="Enter subject" required>
+            </div>
+
+            <div class="email_writing_content">
+                <h3>Message:</h3>
+                <textarea name="body" placeholder="Write your email here..." required></textarea>
+            </div>
+
+            <!--Attachment -->
+            <div class="email_writing_attachment">
+                <h3>Attachment:</h3>
+                <input type="file" name="attachment">
+            </div>
+
+            <button type="submit">Send</button>
+        </form>
+
+        <!-- Messages-->
+        {% if success_message %}
+            <p style="color: green;">{{ success_message }}</p>
+        {% endif %}
+
+        {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

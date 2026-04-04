@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email History</title>
+</head>
+<body>
+    <h1>Email History</h1>
+
+    <a href="/">Back to Send Email</a>
+
+    {% if emails %}
+        <div>
+            
+        </div>
+        <table border="1" cellpadding="10">
+            <tr>
+                <th>Recipient</th>
+                <th>CC</th>
+                <th>Subject</th>
+                <th>Status</th>
+                <th>Attachment</th>
+                <th>Sent At</th>
+            </tr>
+
+            {% for email in emails %}
+            <tr>
+                <td>{{ email.recipient }}</td>
+                <td>{{ email.cc }}</td>
+                <td>{{ email.subject }}</td>
+                <td>{{ email.status }}</td>
+                <td>{{ email.attachment_name }}</td>
+                <td>{{ email.sent_at }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No emails found.</p>
+    {% endif %}
+</body>
+</html>
