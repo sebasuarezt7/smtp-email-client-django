@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.core.mail import EmailMessage
 from .models import Mail
+from .services import send_email_service
+
 
 def home(request):
     if request.method == 'POST':
@@ -14,49 +15,17 @@ def home(request):
         if cc_raw:
             cc_list = [email.strip() for email in cc_raw.split(',') if email.strip()]
 
-        try:
-            email = EmailMessage(
-                subject,
-                body,
-                to=[recipient],
-                cc=cc_list
-            )
+        success, message = send_email_service(
+            recipient, subject, body, cc_list, attachment
+        )
 
-            if attachment:
-                email.attach(
-                    attachment.name,
-                    attachment.read(),
-                    attachment.content_type
-                )
-
-            email.send()
-
-            Mail.objects.create(
-                recipient=recipient,
-                cc=', '.join(cc_list),
-                subject=subject,
-                body=body,
-                attachment_name=attachment.name if attachment else '',
-                status='sent'
-            )
-
+        if success:
             return render(request, 'mailapp/home.html', {
-                'success_message': 'Email sent successfully.'
+                'success_message': message
             })
-
-        except Exception as e:
-            Mail.objects.create(
-                recipient=recipient,
-                cc=', '.join(cc_list),
-                subject=subject,
-                body=body,
-                attachment_name=attachment.name if attachment else '',
-                status='failed',
-                error_message=str(e)
-            )
-
+        else:
             return render(request, 'mailapp/home.html', {
-                'error_message': f'Error sending email: {str(e)}'
+                'error_message': message
             })
 
     return render(request, 'mailapp/home.html')
