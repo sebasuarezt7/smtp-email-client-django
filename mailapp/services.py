@@ -1,13 +1,26 @@
+import urllib.request
 from django.core.mail import EmailMessage
 from .models import Mail
+from django.core.mail import EmailMessage, get_connection
 
-def send_email_service(recipient, subject, body, cc_list, attachment):
+def send_email_service(sender, password, recipient, subject, body, cc_list, attachment):
     try:
+        connection = get_connection(
+            backend='django.core.mail.backends.smtp.EmailBackend',
+            host = 'smtp.gmail.com',
+            port = 465,
+            use_ssl = True,
+            username = sender,
+            password = password,
+        )
+
         email = EmailMessage(
-            subject,
-            body,
+            from_email=sender,
             to=[recipient],
-            cc=cc_list
+            subject=subject,
+            body=body,
+            cc=cc_list,
+            connection=connection
         )
 
         if attachment:
@@ -20,6 +33,7 @@ def send_email_service(recipient, subject, body, cc_list, attachment):
         email.send()
 
         Mail.objects.create(
+            sender=sender,
             recipient=recipient,
             cc=', '.join(cc_list),
             subject=subject,
@@ -31,7 +45,9 @@ def send_email_service(recipient, subject, body, cc_list, attachment):
         return True, "Email sent successfully."
 
     except Exception as e:
+        print(f"Error sending email: {e}")
         Mail.objects.create(
+            sender=sender,
             recipient=recipient,
             cc=', '.join(cc_list),
             subject=subject,
@@ -40,5 +56,5 @@ def send_email_service(recipient, subject, body, cc_list, attachment):
             status='failed',
             error_message=str(e)
         )
-
+        print(sender)
         return False, str(e)

@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Mail(models.Model):
+    sender = models.EmailField()
     recipient = models.EmailField()
     cc = models.TextField(blank=True, null=True)
     subject = models.CharField(max_length=255)
@@ -16,3 +17,10 @@ class Mail(models.Model):
 
     def __str__(self):
         return self.subject
+    
+class User(models.Model):
+    sender = models.EmailField()
+    password = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.sender
