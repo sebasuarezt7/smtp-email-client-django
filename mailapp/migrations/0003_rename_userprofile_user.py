@@ -2,7 +2,7 @@
 
 from django.db import migrations
 
-
+# This migration renames the UserProfile model to User to better reflect its purpose and align with common naming conventions for user-related models in Django applications.
 class Migration(migrations.Migration):
 
     dependencies = [

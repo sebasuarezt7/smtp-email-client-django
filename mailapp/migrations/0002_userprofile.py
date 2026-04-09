@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 
-
+# This migration creates the UserProfile model, which will be used to store user information such as email and password for authentication purposes when sending emails through the SMTP client.
 class Migration(migrations.Migration):
 
     dependencies = [

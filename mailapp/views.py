@@ -3,7 +3,12 @@ from .models import Mail, User
 from .services import send_email_service
 import smtplib
 import ssl  
-
+""" This file contains the view functions for the mailapp application. 
+It includes functions for handling user authentication, sending emails, and displaying email history. 
+The home function processes email sending requests, while the history function retrieves and displays the user's 
+email history. The login function manages user authentication by verifying credentials against the SMTP server, 
+and the register function allows new users to create an account. Each function interacts with the corresponding 
+templates to render the appropriate responses based on user actions. """
 
 def home(request):
     if  'is_authenticated' not in request.session or not request.session['is_authenticated']:

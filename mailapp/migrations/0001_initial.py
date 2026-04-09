@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 
-
+# This migration creates the initial database schema for the Mail model, which will be used to store email information such as sender, recipient, subject, body, and status of the email sending process.
 class Migration(migrations.Migration):
 
     initial = True

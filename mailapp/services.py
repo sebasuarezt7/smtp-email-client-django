@@ -3,6 +3,12 @@ from django.core.mail import EmailMessage
 from .models import Mail
 from django.core.mail import EmailMessage, get_connection
 
+""" This function is responsible for sending an email using the provided sender's email, password, recipient's email,
+subject, body, cc list, and attachment. It establishes a connection to the SMTP server, creates an email message, 
+and attempts to send it. If the email is sent successfully, it logs the email details in the Mail model with a status 
+of 'sent'. If there is an error during the sending process, it logs the error message in the Mail model with a status of 'failed'. 
+The function returns a tuple indicating whether the email was sent successfully and an accompanying message."""
+
 def send_email_service(sender, password, recipient, subject, body, cc_list, attachment):
     try:
         connection = get_connection(
