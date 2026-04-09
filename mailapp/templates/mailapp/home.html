@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mail App</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <div class="email_writing">
@@ -47,11 +49,11 @@
 
         <!-- Messages-->
         {% if success_message %}
-            <p style="color: green;">{{ success_message }}</p>
+            <p>{{ success_message }}</p>
         {% endif %}
 
         {% if error_message %}
-            <p style="color: red;">{{ error_message }}</p>
+            <p>{{ error_message }}</p>
         {% endif %}
     </div>
 </body>

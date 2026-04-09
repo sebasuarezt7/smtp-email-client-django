@@ -1,0 +1,243 @@
+/* styles.css */
+
+/* General reset  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #eef2f7, #dfe9f3);
+    color: #1f2937;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/*  Main container  */
+.email_writing,
+.form-container,
+.history-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 32px;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.12);
+    border: 1px solid #e5e7eb;
+}
+
+/*  Headings  */
+h1, h2, h3 {
+    color: #111827;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #374151;
+}
+
+/* Links  */
+a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+/*  Form  */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/*  Inputs / textarea / file  */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 0.98rem;
+    background-color: #f9fafb;
+    transition: all 0.25s ease;
+    outline: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus,
+textarea:focus {
+    border-color: #2563eb;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+/*  Buttons  */
+button {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    align-self: flex-start;
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 22px rgba(37, 99, 235, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/*  Top navigation link  */
+.email_writing > a,
+.history-container > a,
+.form-container > a,
+body > a {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 16px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+}
+
+/*  Sections inside home  */
+.email_writing_header {
+    margin-bottom: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.email_writing_recipients,
+.email_writing_cc,
+.email_writing_subject,
+.email_writing_content,
+.email_writing_attachment {
+    display: flex;
+    flex-direction: column;
+}
+
+/*  Messages  */
+.success-message,
+.error-message {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.success-message {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.error-message {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+/*  Table styles  */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+thead {
+    background: #1f2937;
+    color: white;
+}
+
+th, td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+}
+
+th {
+    background: #1f2937;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+tr:hover {
+    background: #eef4ff;
+    transition: 0.2s ease;
+}
+
+/*  Paragraphs  */
+p {
+    margin-top: 16px;
+    line-height: 1.6;
+    color: #4b5563;
+}
+
+/*  Labels  */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #374151;
+}
+
+/*  Login/Register card  */
+.auth-wrapper {
+    max-width: 450px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 32px;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.12);
+    border: 1px solid #e5e7eb;
+}
